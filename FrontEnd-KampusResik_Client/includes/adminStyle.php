@@ -1,4 +1,4 @@
-    <style>
+<style>
         :root {
             --deepsea-dark: #0f172a;
             --deepsea-medium: #1e293b;
@@ -20,30 +20,36 @@
             align-items: stretch;
         }
 
-        /* Content Area */
+        /* Content Area - Diperbarui */
         #content {
-            flex-grow: 1;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
             min-height: 100vh;
+            flex-grow: 1;
             transition: all 0.3s;
+            overflow: hidden;
         }
 
-        /* Topbar Styling */
+        /* Topbar Styling - Diperbarui */
         .topbar {
-            background-color: #fff;
+            width: 100% !important;
             height: 70px;
             padding: 0 30px;
-            display: flex;
+            display: flex !important;
             align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid #e2e8f0;
+            justify-content: space-between !important;
+            background-color: #fff;
+            border-bottom: 1px solid #dee2e6;
             position: sticky;
+            z-index: 100;
             top: 0;
-            z-index: 99;
         }
 
         .search-box {
             position: relative;
             width: 300px;
+            flex: 1;
         }
 
         .search-box input {
@@ -67,6 +73,10 @@
             top: 50%;
             transform: translateY(-50%);
             color: #94a3b8;
+        }
+
+        .topbar .d-flex.align-items-center.gap-3.ms-auto {
+            margin-left: auto !important;
         }
 
         /* Cards Styling */

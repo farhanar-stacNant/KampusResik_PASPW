@@ -73,7 +73,7 @@ foreach ($daftarLaporan as $lap) {
             <div class="col-md-4">
                 <div class="card stat-card p-4">
                     <p class="text-secondary small mb-1">Selesai</p>
-                    <h3 class="fw-bold text-teal" style="color: #0d9488;"><?= $selesai ?></h3>
+                    <h3 class="fw-bold text-teal" style="color: #0A2947;"><?= $selesai ?></h3>
                 </div>
             </div>
         </div>
@@ -81,7 +81,7 @@ foreach ($daftarLaporan as $lap) {
         <section class="card stat-card p-4">
             <h2 class="h5 fw-bold mb-3">Tindakan Cepat</h2>
             <div>
-                <a href="laporan.php" class="btn btn-teal text-white fw-bold px-4 py-2" style="background-color: #0d9488;">
+                <a href="riwayat.php" class="btn btn-teal text-white fw-bold px-4 py-2" style="background-color: #293681;">
                     Lihat Semua Laporan
                 </a>
             </div>

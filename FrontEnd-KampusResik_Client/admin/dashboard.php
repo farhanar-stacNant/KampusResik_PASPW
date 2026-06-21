@@ -63,16 +63,10 @@ arsort($kategoriCounts);
         <div id="content">
             <!-- Topbar -->
             <div class="topbar">
-                <div class="d-flex align-items-center gap-3">
-                    <button type="button" id="sidebarCollapse" class="toggle-btn">
-                        <i class="bi bi-justify"></i>
-                    </button>
-                    <div class="search-box d-none d-md-block">
-                        <i class="bi bi-search"></i>
-                        <input type="text" placeholder="Cari laporan atau kategori...">
-                    </div>
+                <div class="search-box d-none d-md-block">
+                    <i class="bi bi-search"></i>
+                    <input type="text" placeholder="Cari laporan atau kategori...">
                 </div>
-
                 <div class="d-flex align-items-center gap-3">
                     <button class="btn btn-link text-secondary position-relative p-1">
                         <i class="bi bi-bell fs-5"></i>
@@ -206,23 +200,7 @@ arsort($kategoriCounts);
                         </div>
                     </div>
 
-                    <!-- Right: Tips Pengelolaan -->
-                    <div class="col-lg-4">
-                        <div class="tips-card d-flex flex-column justify-content-between">
-                            <div class="tips-banner">
-                                <div class="position-relative text-white p-3 z-3 w-100 text-start">
-                                    <span class="badge bg-teal-hover mb-2" style="background-color: var(--teal-primary);">Tips Pengelolaan</span>
-                                    <h6 class="fw-bold mb-0">Kebersihan TPS3R</h6>
-                                </div>
-                            </div>
-                            <div class="p-3 flex-grow-1 d-flex flex-column justify-content-between">
-                                <p class="text-muted small mb-3">Pastikan area TPS3R selalu bersih untuk mencegah penumpukan lalat dan timbulnya bau tidak sedap.</p>
-                                <a href="#" class="text-teal text-decoration-none fw-semibold small d-inline-flex align-items-center gap-1">
-                                    Pelajari Selengkapnya <i class="bi bi-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </main>
 
@@ -243,13 +221,7 @@ arsort($kategoriCounts);
         document.addEventListener("DOMContentLoaded", function () {
             const sidebar = document.getElementById('sidebar');
             const content = document.getElementById('content');
-            const sidebarCollapse = document.getElementById('sidebarCollapse');
-
-            sidebarCollapse.addEventListener('click', function () {
-                sidebar.classList.toggle('active');
-                content.classList.toggle('active');
-            });
-
+            
             // Token for API call
             const API_TOKEN = "<?= $_SESSION['token'] ?>";
 
