@@ -39,6 +39,16 @@ class PetugasSeeder extends Seeder
                 'no_telepon' => '085555555555',
                 'alamat' => 'Jl. Anggrek No. 78, Depok',
                 'area_tugas' => 'Seluruh Area Kampus'
+            ],
+            [
+                'nama' => 'Eko Prasetyo',
+                'nip' => 'PTG004',
+                'email' => 'petugas@kampusresik.id',
+                'password' => bcrypt('petugas123'),
+                'jabatan' => 'petugas_lapangan',
+                'no_telepon' => '086666666666',
+                'alamat' => 'Jl. Melati No. 34, Depok',
+                'area_tugas' => 'Fakultas Ilmu Komputer & Perpustakaan'
             ]
         ];
 
