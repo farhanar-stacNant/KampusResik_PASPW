@@ -1,0 +1,25 @@
+# FrontEnd/.htaccess
+RewriteEngine On
+
+# Redirect ke HTTPS di production
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Handle CORS untuk API
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
+</IfModule>
+
+# PHP settings
+php_value upload_max_filesize 10M
+php_value post_max_size 10M
+php_value max_execution_time 300
+php_value auto_prepend_file "prepend.php"
+
+# Default index
+DirectoryIndex index.php
+
+# Disable directory listing
+Options -Indexes

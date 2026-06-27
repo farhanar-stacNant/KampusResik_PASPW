@@ -1,0 +1,865 @@
+/* ============================================
+   KampusResik - Modern Admin Styles
+   Theme: Slate Dark Sidebar & Modern Blue Accents
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --adm-primary: #3b82f6;
+    --adm-primary-dark: #1d4ed8;
+    --adm-primary-light: #60a5fa;
+    --adm-primary-lighter: #eff6ff;
+    --adm-sidebar-bg: #0f172a;
+    --adm-sidebar-hover: #1e293b;
+    --adm-sidebar-active: #2563eb;
+    --adm-accent: #10b981;
+    --adm-text: #0f172a;
+    --adm-muted: #64748b;
+    --adm-border: #e2e8f0;
+    --adm-bg: #f8fafc;
+    --adm-white: #fff;
+    --adm-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --adm-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --adm-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --adm-success: #10b981;
+    --adm-warning: #f59e0b;
+    --adm-danger: #ef4444;
+}
+
+/* --- Reset & Base --- */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--adm-bg);
+    color: var(--adm-text);
+    overflow-x: hidden;
+}
+
+/* --- Admin Wrapper --- */
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- Mobile Header --- */
+.admin-mobile-header {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background: var(--adm-sidebar-bg);
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    z-index: 1030;
+    box-shadow: var(--adm-shadow);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.mobile-toggle {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--adm-white);
+    padding: 0.6rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-toggle:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+.mobile-brand {
+    color: var(--adm-white);
+    font-weight: 700;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+/* --- Sidebar Kiri --- */
+.admin-sidebar {
+    width: 280px;
+    min-width: 280px;
+    background: var(--adm-sidebar-bg);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1040;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 4px 0 24px rgba(0,0,0,0.15);
+    border-right: 1px solid rgba(255,255,255,0.05);
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 2rem 1.75rem;
+    color: var(--adm-white);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.sidebar-brand i {
+    font-size: 2.2rem;
+    background: linear-gradient(135deg, var(--adm-primary), var(--adm-primary-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-title {
+    font-weight: 800;
+    font-size: 1.25rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.brand-subtitle {
+    font-size: 0.75rem;
+    opacity: 0.5;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 2px;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1.5rem 1rem;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 1.2rem;
+    border-radius: 12px;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.05);
+    color: var(--adm-white);
+    transform: translateX(4px);
+}
+
+.nav-item.active {
+    background: var(--adm-sidebar-active);
+    color: var(--adm-white);
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+}
+
+.nav-label {
+    order: 1;
+    font-size: 0.95rem;
+}
+
+.nav-icon {
+    order: 2;
+    font-size: 1.35rem;
+}
+
+/* --- Sidebar Footer --- */
+.sidebar-footer {
+    padding: 1.25rem 1rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.03);
+    color: var(--adm-white);
+    text-decoration: none;
+    transition: all 0.2s;
+    border: 1px solid rgba(255,255,255,0.02);
+}
+
+.admin-profile:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(255,255,255,0.05);
+}
+
+.profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--adm-primary), var(--adm-primary-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    box-shadow: var(--adm-shadow);
+}
+
+.profile-avatar i {
+    color: var(--adm-white);
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-name {
+    font-weight: 600;
+    font-size: 0.925rem;
+}
+
+.profile-role {
+    font-size: 0.75rem;
+    opacity: 0.45;
+    font-weight: 500;
+}
+
+/* --- Main Content --- */
+.admin-main {
+    flex: 1;
+    margin-left: 280px;
+    padding: 2.5rem;
+    min-height: 100vh;
+}
+
+/* --- Admin Header --- */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid var(--adm-border);
+    flex-wrap: wrap;
+    gap: 1.25rem;
+}
+
+.admin-header h4 {
+    font-weight: 800;
+    color: var(--adm-text);
+    font-size: 1.6rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+}
+
+.admin-header p {
+    color: var(--adm-muted);
+    margin-bottom: 0;
+    font-size: 0.95rem;
+}
+
+/* --- Buttons --- */
+.btn-admin {
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+}
+
+.btn-admin-primary {
+    background: linear-gradient(135deg, var(--adm-primary), var(--adm-primary-dark));
+    color: var(--adm-white);
+    border: none;
+    box-shadow: 0 4px 12px rgba(59,130,246,0.25);
+}
+
+.btn-admin-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59,130,246,0.35);
+    opacity: 0.95;
+}
+
+.btn-admin-outline {
+    background: var(--adm-white);
+    color: var(--adm-text);
+    border: 1px solid var(--adm-border);
+    box-shadow: var(--adm-shadow-sm);
+}
+
+.btn-admin-outline:hover {
+    background: var(--adm-bg);
+    border-color: var(--adm-muted);
+}
+
+/* --- Cards --- */
+.admin-card {
+    background: var(--adm-white);
+    border-radius: 18px;
+    box-shadow: var(--adm-shadow-sm);
+    border: 1px solid var(--adm-border);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.admin-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--adm-shadow-lg);
+}
+
+.card-body {
+    padding: 1.75rem;
+}
+
+/* --- Stat Cards --- */
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.75rem;
+}
+
+.stat-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    box-shadow: var(--adm-shadow-sm);
+}
+
+.stat-icon.blue { background: rgba(59,130,246,0.1); color: var(--adm-primary); }
+.stat-icon.orange { background: rgba(245,158,11,0.1); color: var(--adm-warning); }
+.stat-icon.green { background: rgba(16,185,129,0.1); color: var(--adm-success); }
+.stat-icon.red { background: rgba(239,68,68,0.1); color: var(--adm-danger); }
+
+.stat-info h3 {
+    font-weight: 800;
+    font-size: 1.85rem;
+    margin-bottom: 0.2rem;
+    letter-spacing: -0.03em;
+}
+
+.stat-info p {
+    color: var(--adm-muted);
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.15rem;
+}
+
+.stat-trend {
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.stat-trend.up { color: var(--adm-success); }
+.stat-trend.down { color: var(--adm-danger); }
+
+/* --- Chart --- */
+.chart-container {
+    background: var(--adm-white);
+    border-radius: 18px;
+    padding: 1.75rem;
+    box-shadow: var(--adm-shadow-sm);
+    border: 1px solid var(--adm-border);
+}
+
+.chart-bars {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 220px;
+    gap: 1.25rem;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--adm-border);
+}
+
+.chart-bar-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+}
+
+.chart-bar {
+    width: 22px;
+    border-radius: 6px 6px 0 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chart-bar.primary { background: linear-gradient(180deg, var(--adm-primary-light), var(--adm-primary)); }
+.chart-bar.secondary { background: #cbd5e1; }
+
+.chart-label {
+    font-size: 0.85rem;
+    color: var(--adm-muted);
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+/* --- Progress --- */
+.progress-admin {
+    height: 8px;
+    background: #f1f5f9;
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: 100px;
+    transition: width 0.5s ease;
+}
+
+/* --- Table --- */
+.admin-table {
+    width: 100%;
+    font-size: 0.925rem;
+    border-collapse: collapse;
+}
+
+.admin-table thead th {
+    background: #f8fafc;
+    color: var(--adm-muted);
+    font-weight: 700;
+    padding: 1.1rem 1.25rem;
+    border-bottom: 2px solid var(--adm-border);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-align: left;
+}
+
+.admin-table tbody td {
+    padding: 1.25rem;
+    border-bottom: 1px solid var(--adm-border);
+    vertical-align: middle;
+    color: var(--adm-text);
+}
+
+.admin-table tbody tr {
+    transition: background 0.15s ease;
+}
+
+.admin-table tbody tr:hover {
+    background: #f8fafc;
+}
+
+/* --- Status Badges --- */
+.badge-status {
+    display: inline-block;
+    padding: 0.4rem 0.85rem;
+    border-radius: 100px;
+    font-size: 0.775rem;
+    font-weight: 700;
+    text-align: center;
+    box-shadow: var(--adm-shadow-sm);
+}
+
+.badge-selesai { background: #d1fae5; color: #065f46; }
+.badge-proses { background: #dbeafe; color: #1e40af; }
+.badge-masuk { background: #fef3c7; color: #92400e; }
+.badge-tertunda { background: #fee2e2; color: #991b1b; }
+.badge-belum { background: #f1f5f9; color: #475569; }
+
+/* --- Select Styling --- */
+.form-select.status-select {
+    padding: 0.375rem 2rem 0.375rem 1rem;
+    font-weight: 600;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    border-color: var(--adm-border);
+    background-color: var(--adm-white);
+    color: var(--adm-text);
+    transition: all 0.2s;
+    cursor: pointer;
+    box-shadow: var(--adm-shadow-sm);
+}
+
+.form-select.status-select:hover {
+    border-color: var(--adm-muted);
+}
+
+/* --- Input Fields --- */
+.form-control, .form-select {
+    border-radius: 10px;
+    padding: 0.65rem 1rem;
+    border-color: var(--adm-border);
+    font-size: 0.925rem;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--adm-primary);
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+}
+
+/* --- Pagination --- */
+.pagination-admin {
+    display: flex;
+    gap: 0.35rem;
+}
+
+.pagination-admin .page-link {
+    border: 1px solid var(--adm-border);
+    color: var(--adm-muted);
+    border-radius: 10px;
+    padding: 0.55rem 1rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    background: var(--adm-white);
+}
+
+.pagination-admin .page-item.active .page-link {
+    background: var(--adm-primary);
+    color: var(--adm-white);
+    border-color: var(--adm-primary);
+    box-shadow: 0 4px 10px rgba(59,130,246,0.2);
+}
+
+.pagination-admin .page-link:hover {
+    background: #f1f5f9;
+    color: var(--adm-text);
+}
+
+/* --- Animations --- */
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+    animation: slideInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* --- Overlay --- */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 1035;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.show {
+    display: block;
+}
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+    .admin-sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .admin-sidebar.mobile-open {
+        transform: translateX(0);
+    }
+    
+    .admin-main {
+        margin-left: 0;
+        padding: 2rem 1.5rem;
+        padding-top: 95px;
+    }
+    
+    .admin-mobile-header {
+        display: flex;
+    }
+    
+    .admin-header {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-main { padding: 1.5rem 1rem; padding-top: 90px; }
+    .admin-header { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+    .chart-bars { height: 180px; }
+    .stat-card { flex-direction: column; text-align: center; gap: 0.75rem; }
+}
+/* Kalender dengan progress mini */
+.calendar-day {
+    position: relative;
+    min-height: 80px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.06);
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-day:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(21,101,192,0.12);
+    border-color: rgba(21,101,192,0.2);
+}
+
+.calendar-day.empty {
+    background: transparent;
+    border: none;
+    cursor: default;
+}
+
+.calendar-day.empty:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.calendar-day.today {
+    border: 2px solid #1565C0;
+    background: rgba(21,101,192,0.05);
+}
+
+.calendar-day.active {
+    background: rgba(21,101,192,0.08);
+}
+
+.calendar-day.has-progress {
+    border-bottom: 3px solid #1565C0;
+}
+
+.day-number {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.calendar-day.today .day-number {
+    color: #1565C0;
+}
+
+.petugas-name {
+    font-size: 0.7rem;
+    color: #1565C0;
+    margin-top: auto;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.petugas-dot {
+    width: 8px;
+    height: 8px;
+    background: #1565C0;
+    border-radius: 50%;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+.day-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: rgba(0,0,0,0.05);
+    border-radius: 0 0 7px 7px;
+    overflow: hidden;
+}
+
+.day-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #1565C0, #42A5F5);
+    border-radius: 0 0 7px 7px;
+    transition: width 0.5s ease;
+}
+
+/* Chart container */
+#chart-progress-section {
+    scroll-margin-top: 20px;
+}
+
+#detail-progress {
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* ============================================
+   KALENDER GRID - KOTAK PERSEGI
+   ============================================ */
+
+.calendar-wrapper {
+    width: 100%;
+}
+
+/* Header Hari (Sen, Sel, Rab, ...) */
+.calendar-header-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.calendar-header-cell {
+    text-align: center;
+    padding: 8px 4px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Grid Tanggal */
+.calendar-days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+/* Kotak Persegi Tanggal */
+.calendar-day-cell {
+    aspect-ratio: 1 / 1; /* === PERSEGI === */
+    min-height: 0; /* Penting untuk grid */
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.06);
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+.calendar-day-cell:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(21,101,192,0.12);
+    border-color: rgba(21,101,192,0.2);
+}
+
+.calendar-day-cell.empty {
+    background: transparent;
+    border: none;
+    cursor: default;
+    pointer-events: none;
+}
+
+.calendar-day-cell.empty:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.calendar-day-cell.today {
+    border: 2px solid #1565C0;
+    background: rgba(21,101,192,0.05);
+}
+
+.calendar-day-cell.active {
+    background: rgba(21,101,192,0.08);
+}
+
+.calendar-day-cell.has-progress {
+    border-bottom: 3px solid #1565C0;
+}
+
+.day-number {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 1;
+}
+
+.calendar-day-cell.today .day-number {
+    color: #1565C0;
+}
+
+.petugas-name {
+    font-size: 0.65rem;
+    color: #1565C0;
+    margin-top: auto;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.petugas-dot {
+    width: 6px;
+    height: 6px;
+    background: #1565C0;
+    border-radius: 50%;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+}
+
+/* Mini progress bar di bawah tanggal */
+.day-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: rgba(0,0,0,0.05);
+    border-radius: 0 0 7px 7px;
+    overflow: hidden;
+}
+
+.day-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #1565C0, #42A5F5);
+    border-radius: 0 0 7px 7px;
+    transition: width 0.5s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .calendar-day-cell {
+        padding: 4px;
+    }
+    .day-number {
+        font-size: 0.8rem;
+    }
+    .petugas-name {
+        font-size: 0.55rem;
+    }
+    .calendar-header-cell {
+        font-size: 0.7rem;
+        padding: 6px 2px;
+    }
+}
