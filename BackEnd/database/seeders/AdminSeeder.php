@@ -25,5 +25,13 @@ class AdminSeeder extends Seeder
             'role'      => 'petugas',
             'telepon'   => '081298765432',
         ]);
+
+        User::create([
+            'name'      => 'Koordinator',
+            'email'     => 'koordinator@kampusresik.id',
+            'password'  => Hash::make('koordinator123'),
+            'role'      => 'koordinator',
+            'telepon'   => '081377777777',
+        ]);
     }
 }

@@ -25,7 +25,7 @@ class AuthController extends Controller
         }
 
         $user = User::where('email', $request->email)
-                    ->whereIn('role', ['admin', 'petugas'])
+                    ->whereIn('role', ['admin', 'petugas', 'koordinator'])
                     ->first();
 
         if (!$user || !Hash::check($request->password, $user->password)) {
@@ -43,8 +43,13 @@ class AuthController extends Controller
                 'user'      => [
                     'id'    => $user->id,
                     'nama'  => $user->name,
+                    'name'  => $user->name,
                     'email' => $user->email,
                     'role'  => $user->role,
+                    'telepon' => $user->telepon ?? '',
+                    'no_hp' => $user->telepon ?? '',
+                    'lokasi_sekitar' => $user->lokasi_sekitar ?? '',
+                    'created_at' => $user->created_at ? $user->created_at->format('Y-m-d') : '',
                 ],
                 'token'     => $token,
                 'token_type'=> 'Bearer'
@@ -64,14 +69,54 @@ class AuthController extends Controller
 
     public function me(Request $request)
     {
+        $user = $request->user();
         return response()->json([
             'success' => true,
             'data'    => [
-                'id'    => $request->user()->id,
-                'nama'  => $request->user()->name,
-                'email' => $request->user()->email,
-                'role'  => $request->user()->role,
+                'id'    => $user->id,
+                'nama'  => $user->name,
+                'name'  => $user->name,
+                'email' => $user->email,
+                'role'  => $user->role,
+                'no_hp' => $user->telepon ?? '-',
+                'telepon' => $user->telepon ?? '-',
+                'lokasi_sekitar' => $user->lokasi_sekitar ?? '-',
+                'created_at' => $user->created_at->format('Y-m-d H:i:s'),
             ]
         ]);
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $user = $request->user();
+        $user->name = $request->nama ?? $user->name;
+        $user->email = $request->email ?? $user->email;
+        $user->telepon = $request->no_hp ?? $user->telepon;
+        $user->lokasi_sekitar = $request->lokasi_sekitar ?? $user->lokasi_sekitar;
+        $user->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Profil berhasil diupdate',
+            'data' => ['nama' => $user->name, 'email' => $user->email, 'no_hp' => $user->telepon, 'lokasi_sekitar' => $user->lokasi_sekitar]
+        ]);
+    }
+
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required|string',
+            'new_password' => 'required|string|min:6',
+        ]);
+
+        $user = $request->user();
+        if (!Hash::check($request->current_password, $user->password)) {
+            return response()->json(['success' => false, 'message' => 'Password saat ini salah'], 400);
+        }
+
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return response()->json(['success' => true, 'message' => 'Password berhasil diubah']);
     }
 }

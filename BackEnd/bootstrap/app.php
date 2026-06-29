@@ -17,9 +17,6 @@ return Application::configure(basePath: dirname(__DIR__))
             'api/*',
             'public/*',
         ]);
-        $middleware->alias([
-            'verify.api.token' => \App\Http\Middleware\VerifyApiSecretToken::class,
-        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

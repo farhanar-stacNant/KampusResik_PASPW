@@ -15,8 +15,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role',     
+        'role',
         'telepon',
+        'lokasi_sekitar',
         'avatar',
     ];
 
@@ -41,5 +42,15 @@ class User extends Authenticatable
     public function isPetugas(): bool
     {
         return $this->role === 'petugas';
+    }
+
+    public function isKoordinator(): bool
+    {
+        return $this->role === 'koordinator';
+    }
+
+    public function isAdminOrKoordinator(): bool
+    {
+        return in_array($this->role, ['admin', 'koordinator']);
     }
 }
